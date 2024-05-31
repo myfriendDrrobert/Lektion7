@@ -14,13 +14,11 @@ extern "C" void app_main(void)
 {
     led1 = new Led(LED_PIN);
 
-    for (size_t i=0; i < 5; i++)
-    {
-        
-        led1 -> On();
-        vTaskDelay(pdMS_TO_TICKS(1000));
-        led1 -> Off();
-        vTaskDelay(pdMS_TO_TICKS(1000));
+    led1->Blink(1000, 1000);
+    for (size_t i=0; i < 10 * 200; i++)
+    {        
+        led1 -> Update();
+        vTaskDelay(pdMS_TO_TICKS(20));
     }
 
     delete led1;
